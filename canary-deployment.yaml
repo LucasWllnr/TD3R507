@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-app-canary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devops-app
+      version: canary
+  template:
+    metadata:
+      labels:
+        app: devops-app
+        version: canary
+    spec:
+      containers:
+        - name: devops-app
+          image: wl205938/td3r507:v2
+          ports:
+            - containerPort: 8080  # Replace with the actual port your app uses
